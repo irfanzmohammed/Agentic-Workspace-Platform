@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Show, SignInButton, SignUpButton, UserButton, OrganizationSwitcher, useAuth } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
-// import { PlanButton } from "@/components/PlanButton";
+import { PlanButton } from "@/components/PlanButton";
 
 // Shared across every route (root layout). The landing page gets its section links and a way into
 // the app; inside the app, the logo leads home to the dashboard and the plan button takes its place.
@@ -41,12 +41,12 @@ export function SiteHeader() {
           {/* Membership-optional: hidePersonal=false lets a solo user stay on their personal
               account instead of being forced to create/join an org. */}
           <OrganizationSwitcher afterCreateOrganizationUrl="/dashboard" afterSelectOrganizationUrl="/dashboard" />
-          {isLandingPage && (
+          {isLandingPage ? (
             <Button asChild size="sm">
               <Link href="/dashboard">Dashboard</Link>
             </Button>
-        //   ) : (
-            // <PlanButton />
+          ) : (
+            <PlanButton />
           )}
           <UserButton />
         </Show>
