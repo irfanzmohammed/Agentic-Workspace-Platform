@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useState, type ReactNode } from "react";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-// import { PricingPlans } from "@/components/PricingPlans";
+import { PricingPlans } from "@/components/PricingPlans";
 
 type UpgradeReason = { title: string; description?: string };
 
@@ -29,7 +29,7 @@ export function UpgradeDialogProvider({ children }: { children: ReactNode }) {
             {reason?.description && <DialogDescription>{reason.description}</DialogDescription>}
           </DialogHeader>
           {/* Close first: this dialog blocks clicks outside itself, including Clerk's checkout drawer. */}
-          {/* <PricingPlans onCheckoutStart={close} /> */}
+          <PricingPlans onCheckoutStart={close} />
         </DialogContent>
       </Dialog>
     </UpgradeDialogContext.Provider>
